@@ -9,6 +9,8 @@
 
 A modern full-stack pizza ordering platform built with the MERN stack. Users can browse pizzas, build custom pizzas, place orders using Razorpay, and track deliveries in real time. Administrators can manage inventory, orders, users, and business analytics through a dedicated admin dashboard.
 
+PizzAIa is a MERN Stack web application that enables customers to order pizzas online, customize their own pizzas, make secure payments through Razorpay, and track orders in real time. The platform also provides administrators with inventory management, order monitoring, low-stock alerts, and business analytics.
+
 ---
 
 # ✨ Features
@@ -27,6 +29,7 @@ A modern full-stack pizza ordering platform built with the MERN stack. Users can
 - Order History
 - Real-Time Order Tracking
 - User Profile Management
+-  Forgot Password & Password Reset
 
 ## 👨‍💼 Admin Features
 
@@ -134,27 +137,32 @@ git clone https://github.com/universecoder1008/OIBSIP.git
 cd OIBSIP
 ```
 
-## Backend Setup
+## Install Dependencies
+
+### Backend
 
 ```bash
 cd backend
 npm install
-npm run dev
 ```
 
-## Frontend Setup
+### Frontend
 
 ```bash
-cd frontend
+cd ../frontend
 npm install
-npm run dev
 ```
 
----
+### Root Project
 
-# 🔐 Environment Variables
+```bash
+cd ..
+npm install
+```
 
-Create a `.env` file inside the backend directory.
+## Configure Environment Variables
+
+Create a `.env` file inside the `backend` directory:
 
 ```env
 PORT=5000
@@ -163,14 +171,36 @@ MONGO_URI=your_mongodb_connection_string
 
 JWT_SECRET=your_jwt_secret
 
+RAZORPAY_KEY_ID=your_razorpay_key_id
+RAZORPAY_KEY_SECRET=your_razorpay_key_secret
+
 EMAIL_USER=your_email
 EMAIL_PASS=your_email_password
-
-RAZORPAY_KEY_ID=your_key
-RAZORPAY_KEY_SECRET=your_secret
 ```
 
+## Run Application
+
+```bash
+npm run dev
+```
+
+## Application URLs
+
+Frontend:
+
+```text
+http://localhost:5173
+```
+
+Backend:
+
+```text
+http://localhost:5000
+```
+
+
 ---
+
 
 # 📁 Project Structure
 
@@ -201,7 +231,7 @@ frontend/
 
 ---
 
-# 🌟 Key Highlights
+# 🌟 Project Highlights
 
 ✅ Real-Time Order Tracking using Socket.IO
 
@@ -238,6 +268,7 @@ B.Tech Electronics Engineering
 MITS Gwalior
 
 GitHub: https://github.com/universecoder1008
+Project Repository: https://github.com/universecoder1008/OIBSIP
 
 ---
 
