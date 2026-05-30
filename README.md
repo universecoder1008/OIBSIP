@@ -69,59 +69,59 @@ A modern full-stack pizza ordering platform built with the MERN stack. Users can
 
 ---
 
-# 📸 Screenshots
+# 📸 screenshot
 
 ## 📷 Home Page
 
-<img src="./screenshots/home.png" alt="Home Page" width="100%" />
+<img src="./screenshot/home.png" alt="Home Page" width="100%" />
 
 ---
 
 ## 📷 Custom Pizza Builder
 
-<img src="./screenshots/coustom.png" alt="Custom Pizza Builder" width="100%" />
+<img src="./screenshot/coustom.png" alt="Custom Pizza Builder" width="100%" />
 
 ---
 
 ## 📷 Shopping Cart
 
-<img src="./screenshots/cart.png" alt="Shopping Cart" width="100%" />
+<img src="./screenshot/cart.png" alt="Shopping Cart" width="100%" />
 
 ---
 
 ## 📷 Checkout Page
 
-<img src="./screenshots/checkout.png" alt="Checkout Page" width="100%" />
+<img src="./screenshot/checkout.png" alt="Checkout Page" width="100%" />
 
 ---
 
 ## 📷 My Orders
 
-<img src="./screenshots/userOrder.png" alt="My Orders" width="100%" />
+<img src="./screenshot/userOrder.png" alt="My Orders" width="100%" />
 
 ---
 
 ## 📷 Real-Time Order Tracking
 
-<img src="./screenshots/liveTrackin.png" alt="Order Tracking" width="100%" />
+<img src="./screenshot/liveTrackin.png" alt="Order Tracking" width="100%" />
 
 ---
 
 ## 📷 Admin Order Management
 
-<img src="./screenshots/adminOrders.png" alt="Admin Orders" width="100%" />
+<img src="./screenshot/adminOrders.png" alt="Admin Orders" width="100%" />
 
 ---
 
 ## 📷 Inventory Management Dashboard
 
-<img src="./screenshots/inventory.png" alt="Inventory Dashboard" width="100%" />
+<img src="./screenshot/inventory.png" alt="Inventory Dashboard" width="100%" />
 
 ---
 
 ## 📷 Analytics Dashboard
 
-<img src="./screenshots/analytics.png" alt="Analytics Dashboard" width="100%" />
+<img src="./screenshot/analytics.png" alt="Analytics Dashboard" width="100%" />
 
 ---
 
