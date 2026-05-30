@@ -1,0 +1,17 @@
+{
+  "name": "pizaaplatform-2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "client": "npm --prefix frontend run dev",
+    "server": "npm --prefix backend run server",
+    "dev": "concurrently -n BACKEND,FRONTEND -c green,blue \"npm run server\" \"npm run client\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --brand: #e8521a;
+    --brand-dark: #c4400e;
+  }
+
+  body {
+    @apply bg-[#0d0d0d] text-[#f0ebe3] font-sans antialiased;
+  }
+
+  * {
+    @apply box-border;
+  }
+
+  input, textarea, select {
+    @apply bg-surface-2 border border-[#333] rounded-xl px-3.5 py-2.5 text-[#f0ebe3] text-sm font-sans outline-none transition-colors w-full;
+    font-family: 'DM Sans', sans-serif;
+  }
+  input:focus, textarea:focus, select:focus {
+    @apply border-brand;
+  }
+  select {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-brand hover:bg-brand-dark text-white font-medium rounded-xl px-4 py-2.5 text-sm flex items-center gap-1.5 transition-all cursor-pointer border-none;
+  }
+  .btn-outline {
+    @apply border border-brand text-brand hover:bg-brand hover:text-white font-medium rounded-xl px-4 py-2.5 text-sm flex items-center gap-1.5 transition-all cursor-pointer bg-transparent;
+  }
+  .btn-ghost {
+    @apply bg-surface-2 hover:bg-surface-3 border border-[#333] text-[#f0ebe3] font-medium rounded-xl px-4 py-2.5 text-sm flex items-center gap-1.5 transition-all cursor-pointer;
+  }
+  .card {
+    @apply bg-surface border border-[#333] rounded-2xl overflow-hidden;
+  }
+  .section-title {
+    @apply font-display text-3xl mb-6 text-[#f0ebe3];
+  }
+  .form-group {
+    @apply mb-5;
+  }
+  .form-label {
+    @apply block text-xs text-[#a89f94] mb-1.5 font-medium uppercase tracking-wide;
+  }
+  .badge {
+    @apply inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold;
+  }
+  .badge-green  { @apply bg-green-500/15  text-green-400; }
+  .badge-orange { @apply bg-orange-500/15 text-orange-400; }
+  .badge-red    { @apply bg-red-500/15    text-red-400; }
+  .badge-blue   { @apply bg-blue-500/15   text-blue-400; }
+  .badge-gray   { @apply bg-surface-3     text-[#a89f94]; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #555; }
