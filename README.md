@@ -234,7 +234,7 @@ frontend/
 
 **Nikhil Thakur**
 
-B.Tech Electronics & Communication Engineering  
+B.Tech Electronics Engineering  
 MITS Gwalior
 
 GitHub: https://github.com/universecoder1008
