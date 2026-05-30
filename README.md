@@ -77,15 +77,9 @@ A modern full-stack pizza ordering platform built with the MERN stack. Users can
 
 ---
 
-## 📷 Pizza Catalog
-
-<img src="./screenshots/catalog.png" alt="Pizza Catalog" width="100%" />
-
----
-
 ## 📷 Custom Pizza Builder
 
-<img src="./screenshots/builder.png" alt="Pizza Builder" width="100%" />
+<img src="./screenshots/coustom.png" alt="Custom Pizza Builder" width="100%" />
 
 ---
 
@@ -95,21 +89,27 @@ A modern full-stack pizza ordering platform built with the MERN stack. Users can
 
 ---
 
+## 📷 Checkout Page
+
+<img src="./screenshots/checkout.png" alt="Checkout Page" width="100%" />
+
+---
+
 ## 📷 My Orders
 
-<img src="./screenshots/orders.png" alt="Orders Page" width="100%" />
+<img src="./screenshots/userOrder.png" alt="My Orders" width="100%" />
 
 ---
 
 ## 📷 Real-Time Order Tracking
 
-<img src="./screenshots/tracking.png" alt="Order Tracking" width="100%" />
+<img src="./screenshots/liveTrackin.png" alt="Order Tracking" width="100%" />
 
 ---
 
 ## 📷 Admin Order Management
 
-<img src="./screenshots/admin-orders.png" alt="Admin Orders" width="100%" />
+<img src="./screenshots/adminOrders.png" alt="Admin Orders" width="100%" />
 
 ---
 
