@@ -91,7 +91,7 @@ export const authAPI = {
   register:      (payload) => api.post('/auth/register', payload),
   logout:        ()        => api.get('/auth/logout'),
   getProfile:    ()        => api.get('/auth/profile'),
-  updateProfile: (payload) => api.put('/auth/profile', payload),
+  updateProfile: (payload) => api.put('/auth/profile/update', payload),
   verifyEmail: (token) =>
   api.get(`/auth/verify-email/${token}`),
   forgotPassword:(email)   => api.post('/auth/forgot-password', { email }),

@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
+
     name:{
-        type: String,
-        required: true
+        type:String,
+        required:true
     },
 
     email:{
@@ -14,6 +15,25 @@ const userSchema = new mongoose.Schema({
     password:{
         type:String,
         required:true
+    },
+
+    phone:{
+        type:String
+    },
+
+    address:{
+
+        street:{
+            type:String
+        },
+
+        city:{
+            type:String
+        },
+
+        pinCode:{
+            type:String
+        }
     },
 
     isAdmin:{
@@ -34,11 +54,12 @@ const userSchema = new mongoose.Schema({
         type:Date
     },
 
-    verificationToken: String,
+    verificationToken:String,
 
-    verificationTokenExpire: Date,
+    verificationTokenExpire:Date
 
 },
-{timestamps:true})
+{timestamps:true});
+
 
 module.exports = mongoose.model("User", userSchema);

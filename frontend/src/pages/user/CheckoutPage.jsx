@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import toast from 'react-hot-toast'
@@ -14,15 +14,32 @@ export default function CheckoutPage() {
   const { user }  = useAuth()
   const { items, grand, subtotal, tax, delivery, discount, clear } = useCart()
   const [loading, setLoading]   = useState(false)
-  const [address, setAddress]   = useState({
-    street: user?.address?.street || '',
-    city:   user?.address?.city   || '',
-    pin:    user?.address?.pin    || '',
-  })
+
+
+
+  const [address, setAddress] = useState({
+  street: '',
+  city: '',
+  pinCode: '',
+})
+
+  useEffect(() => {
+
+  if(user?.address){
+
+    setAddress({
+      street: user.address.street || '',
+      city: user.address.city || '',
+      pinCode: user.address.pinCode || '',
+    })
+
+  }
+
+}, [user])
   const set = k => e => setAddress(a => ({ ...a, [k]: e.target.value }))
 
   const handleCheckout = async () => {
-    if (!address.street || !address.city || !address.pin) return toast.error('Please fill in delivery address')
+    if (!address.street || !address.city || !address.pinCode) return toast.error('Please fill in delivery address')
     setLoading(true)
     try {
       await openRazorpay({
@@ -42,11 +59,12 @@ export default function CheckoutPage() {
       base: item.base || null,
       sauce: item.sauce || null,
       cheese: item.cheese || null,
-      veggies: item.veggies || []
+      veggies: item.veggies || [],
+      meats: item.meats || []
     })),
     
     totalPrice: grand,
-    address: `${address.street}, ${address.city}, ${address.pin}`
+    address: `${address.street}, ${address.city}, ${address.pinCode}`
     
   };
   
@@ -94,7 +112,7 @@ toast.success('Order placed successfully');
             <div><label className="form-label">Street / Area</label><input value={address.street} onChange={set('street')} placeholder="42 Raj Nagar" /></div>
             <div className="grid grid-cols-2 gap-3">
               <div><label className="form-label">City</label><input value={address.city} onChange={set('city')} placeholder="Gwalior" /></div>
-              <div><label className="form-label">PIN Code</label><input value={address.pin} onChange={set('pin')} placeholder="474001" maxLength={6} /></div>
+              <div><label className="form-label">PIN Code</label><input value={address.pinCode} onChange={set('pinCode')} placeholder="474001" maxLength={6} /></div>
             </div>
           </div>
         </div>

@@ -12,7 +12,7 @@ export default function ProfilePage() {
     phone:  user?.phone  || '',
     street: user?.address?.street || '',
     city:   user?.address?.city   || '',
-    pin:    user?.address?.pin    || '',
+   pinCode: user?.address?.pinCode || '',
   })
   const [loading, setLoading] = useState(false)
   const set = k => e => setForm(f => ({ ...f, [k]: e.target.value }))
@@ -21,7 +21,7 @@ export default function ProfilePage() {
     e.preventDefault()
     setLoading(true)
     try {
-      await authAPI.updateProfile({ name: form.name, phone: form.phone, address: { street: form.street, city: form.city, pin: form.pin } })
+      await authAPI.updateProfile({ name: form.name, phone: form.phone, address: { street: form.street, city: form.city,   pinCode: form.pinCode } })
       toast.success('Profile updated!')
     } catch {
       toast.error('Failed to update profile')
@@ -62,9 +62,15 @@ export default function ProfilePage() {
           <div><label className="form-label">Street / Area</label><input value={form.street} onChange={set('street')} placeholder="42 Raj Nagar" /></div>
           <div className="grid grid-cols-2 gap-3">
             <div><label className="form-label">City</label><input value={form.city} onChange={set('city')} placeholder="Gwalior" /></div>
-            <div><label className="form-label">PIN Code</label><input value={form.pin} onChange={set('pin')} placeholder="474001" /></div>
+            <div><label className="form-label">PIN Code</label><input value={form.pinCode} onChange={set('pinCode')} placeholder="474001" /></div>
           </div>
-          <Button variant="outline" size="sm" onClick={() => toast.success('Address saved!')}>Update Address</Button>
+          <Button 
+  variant="outline" 
+  size="sm"
+  onClick={handleSave}
+>
+ Update Address
+</Button>
         </div>
       </div>
     </div>

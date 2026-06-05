@@ -131,10 +131,13 @@ const user = await User.create({
 
     const getProfile = async (req, res) => {
 
-        res.status(200).json({
-            user: req.user
-        });
-    };
+    const user = await User.findById(req.user._id)
+        .select("-password");
+
+    res.status(200).json({
+        user
+    });
+};
 
     const forgotPassword = async(req,res)=>{
         try {
@@ -334,6 +337,42 @@ res.cookie("token", jwtToken, {
     }
     };
 
+    const updateProfile = async (req,res)=>{
+
+    try{
+           console.log("===== PROFILE UPDATE =====");
+    console.log(req.body);
+
+        console.log(req.body);
+
+        const user = await User.findByIdAndUpdate(
+            req.user._id,
+            {
+                phone: req.body.phone,
+
+                address:{
+                    street: req.body.address.street,
+                    city: req.body.address.city,
+                    pinCode: req.body.address.pinCode
+                }
+            },
+            {new:true}
+        );
+
+
+        res.json({
+            success:true,
+            user
+        });
+
+    }catch(error){
+
+        res.status(500).json({
+            message:error.message
+        });
+    }
+};
+
     module.exports = {
         registerUser,
         loginUser,
@@ -341,5 +380,6 @@ res.cookie("token", jwtToken, {
         getProfile,
         forgotPassword,
         resetPassword,
-        verifyEmail
+        verifyEmail,
+        updateProfile
     };

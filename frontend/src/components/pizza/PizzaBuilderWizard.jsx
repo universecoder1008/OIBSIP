@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-import { BASES, SAUCES, CHEESES, VEGGIES, MEATS, VALID_COUPONS } from '@/utils/constants'
+import { BASES, SAUCES, CHEESES, VEGGIES, MEATS } from '@/utils/constants'
 import { calcBuilderPrice, formatCurrency } from '@/utils/helpers'
 import { useCart } from '@/hooks'
 import { Button } from '@/components/ui'
@@ -41,61 +41,60 @@ export default function PizzaBuilderWizard() {
   const [veggies, setVeggies]   = useState([])
   const [includeMeat, setIncludeMeat] = useState(false)
   const [meats, setMeats]       = useState([])
-  const [coupon, setCoupon]     = useState('')
-  const [discount, setDiscount] = useState(0)
-  const [appliedCoupon, setAppliedCoupon] = useState(null)
+  
 
-  const basePrice  = calcBuilderPrice({ base, sauce, cheese, veggies, meats })
-  const taxAmt     = Math.round(basePrice * 0.05)
-  const delivery   = 49
-  const discountAmt= Math.round(basePrice * discount / 100)
-  const grand      = basePrice + taxAmt + delivery - discountAmt
+ const pizzaPrice = calcBuilderPrice({
+  base,
+  sauce,
+  cheese,
+  veggies,
+  meats
+})
 
   const toggleVeg  = (v) => setVeggies(prev => prev.find(x => x.name === v.name) ? prev.filter(x => x.name !== v.name) : [...prev, v])
   const toggleMeat = (m) => setMeats(prev => prev.find(x => x.name === m.name) ? prev.filter(x => x.name !== m.name) : [...prev, m])
 
   const canNext = [!!base, !!sauce, !!cheese, true, true, true]
 
-  const applyCoupon = () => {
-    const pct = VALID_COUPONS[coupon.toUpperCase()]
-    if (pct) { setDiscount(pct); setAppliedCoupon(coupon.toUpperCase()); toast.success(`${coupon.toUpperCase()} applied — ${pct}% off!`) }
-    else toast.error('Invalid coupon code')
-  }
+  
 
   const addToCart = () => {
 
   const desc = [
-    base,
-    sauce,
-    cheese,
-    ...veggies.map(v => v.name)
-  ]
-    .filter(Boolean)
-    .join(', ');
+  base?.name,
+  sauce?.name,
+  cheese?.name,
+  ...veggies.map(v => v.name),
+  ...meats.map(m => m.name)
+]
+.filter(Boolean)
+.join(', ');
 
-  add({
+ add({
 
-    id: `custom-${Date.now()}`,
+  id: `custom-${Date.now()}`,
 
-    name: 'Custom Pizza',
+  name: 'Custom Pizza',
 
-    description: desc,
+  description: desc,
 
-    price: grand,
+  price: pizzaPrice,
 
-    emoji: '🍕',
+  emoji: '🍕',
 
-    isCustom: true,
+  isCustom: true,
 
-    base: base?.name,
+  base: base?.name,
 
-sauce: sauce?.name,
+  sauce: sauce?.name,
 
-cheese: cheese?.name,
+  cheese: cheese?.name,
 
-    veggies: veggies.map(v => v.name)
+  veggies: veggies.map(v => v.name),
 
-  });
+  meats: meats.map(m => m.name)
+
+});
 
   toast.success('Custom pizza added to cart! 🍕');
 
@@ -202,29 +201,21 @@ cheese: cheese?.name,
                 <div>
                   <h3 className="font-semibold mb-3 text-[#f0ebe3]">Price Breakdown</h3>
                   <div className="bg-surface-2 rounded-xl p-4 space-y-2.5">
-                    {[['Base price', `₹299`],['Extras', `₹${basePrice - 299}`],['Tax (5%)', `₹${taxAmt}`],['Delivery', `₹${delivery}`]].map(([l, v]) => (
+                    {[['Base price', `₹299`],['Extras', `₹${pizzaPrice - 299}`]].map(([l, v]) => (
                       <div key={l} className="flex justify-between text-sm text-[#a89f94]"><span>{l}</span><span>{v}</span></div>
                     ))}
-                    {appliedCoupon && (
-                      <div className="flex justify-between text-sm text-green-400"><span>Discount ({discount}%)</span><span>-₹{discountAmt}</span></div>
-                    )}
+                  
                     <div className="flex justify-between font-bold text-[#f0ebe3] pt-2 border-t border-[#333]">
-                      <span>Grand Total</span><span className="text-brand text-lg">{formatCurrency(grand)}</span>
-                    </div>
+  <span>Pizza Price</span>
+  <span className="text-brand text-lg">
+    {formatCurrency(pizzaPrice)}
+  </span>
+</div>
                   </div>
 
                   {/* Coupon */}
-                  {!appliedCoupon && (
-                    <div className="flex gap-2 mt-3">
-                      <input value={coupon} onChange={e => setCoupon(e.target.value)} placeholder="Coupon code (PIZZA10)" className="flex-1 text-sm" />
-                      <Button size="sm" onClick={applyCoupon}>Apply</Button>
-                    </div>
-                  )}
-                  {appliedCoupon && (
-                    <div className="mt-3 text-xs text-green-400 bg-green-500/10 border border-green-500/30 rounded-xl px-3 py-2">
-                      ✅ {appliedCoupon} applied — {discount}% off!
-                    </div>
-                  )}
+                 
+                
                 </div>
               </div>
             </motion.div>
@@ -243,8 +234,8 @@ cheese: cheese?.name,
           </Button>
         ) : (
           <Button onClick={addToCart}>
-            🛒 Add to Cart — {formatCurrency(grand)}
-          </Button>
+  🛒 Add to Cart — {formatCurrency(pizzaPrice)}
+</Button>
         )}
       </div>
     </div>
