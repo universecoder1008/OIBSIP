@@ -11,6 +11,27 @@ export default function TrackingPage() {
   const dispatch  = useDispatch()
   const { activeOrder, loading } = useSelector(s => s.orders)
 
+  const getETA = (status) => {
+
+  switch(status){
+
+    case "Pending":
+      return "30 min";
+
+    case "Preparing":
+      return "20 min";
+
+    case "Out for Delivery":
+      return "10 min";
+
+    case "Delivered":
+      return "Delivered";
+
+    default:
+      return "30 min";
+  }
+}
+
   useEffect(() => { if (id) dispatch(fetchOrderById(id)) }, [id])
 
   if (loading || !activeOrder) return (
@@ -34,7 +55,9 @@ export default function TrackingPage() {
           </div>
           <div className="text-right">
             <div className="text-xs text-[#6b6460] mb-0.5">Estimated Delivery</div>
-            <div className="font-semibold text-[#f0ebe3]">~30 minutes</div>
+            <div className="font-semibold text-[#f0ebe3]">
+  {getETA(activeOrder.status)}
+</div>
           </div>
         </div>
         <div className="flex justify-between items-center">

@@ -6,7 +6,8 @@ const sendLowStockEmail = async (
   item
 ) => {
     
-
+ console.log("LOW STOCK FUNCTION CALLED");
+  console.log(item);
   const transporter =
     nodemailer.createTransport({
 

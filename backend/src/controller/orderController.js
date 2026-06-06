@@ -37,28 +37,36 @@ const sendLowStockEmail =
       // INVENTORY DEDUCTION + LOW STOCK ALERTS
       for (const item of items) {
 
-        // BASE
-        const updatedBase =
-          await Inventory.findOneAndUpdate(
+        console.log("FULL ORDER ITEM:", item);
+  console.log("BASE VALUE:", item.base);
+const updatedBase =
+  await Inventory.findOneAndUpdate(
 
-            { name: item.base },
+    { name: item.base },
 
-            { $inc: { stock: -1 } },
+    { $inc: { stock: -1 } },
 
-            { new: true }
-          );
-          
+    { returnDocument: "after" }
+  );
 
-        if (
-          updatedBase &&
-          updatedBase.stock <= updatedBase.threshold
-        ) {
 
-          await sendLowStockEmail(
-            updatedBase
-          );
-        }
+console.log("BASE:", updatedBase);
 
+
+if (
+  updatedBase &&
+  updatedBase.stock <= updatedBase.threshold
+) {
+
+  console.log(
+    "LOW BASE STOCK EMAIL",
+    updatedBase.name
+  );
+
+  await sendLowStockEmail(
+    updatedBase
+  );
+}
         // SAUCE
         const updatedSauce =
           await Inventory.findOneAndUpdate(
@@ -67,7 +75,7 @@ const sendLowStockEmail =
 
             { $inc: { stock: -1 } },
 
-            { new: true }
+          { returnDocument:"after" }
           );
 
         if (
@@ -88,7 +96,7 @@ const sendLowStockEmail =
 
             { $inc: { stock: -1 } },
 
-            { new: true }
+           { returnDocument:"after" }
           );
 
         if (
@@ -111,7 +119,7 @@ const sendLowStockEmail =
 
               { $inc: { stock: -1 } },
 
-              { new: true }
+             { returnDocument:"after" }
             );
 
           if (

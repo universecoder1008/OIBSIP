@@ -8,12 +8,56 @@ import { SkeletonCard, SearchInput } from '@/components/ui'
 
 // Mock data (replace with API call)
 const MOCK_PIZZAS = [
-  { _id:'1', name:'Margherita Classic', description:'Fresh mozzarella, tomato sauce, fresh basil leaves', price:299, rating:4.5, tag:'Bestseller', isVeg:true,  cat:'Veg' },
-  { _id:'2', name:'Pepperoni Feast',    description:'Double pepperoni, mozzarella, dried oregano',       price:399, rating:4.8, tag:'Hot',        isVeg:false, cat:'Non-Veg' },
-  { _id:'3', name:'BBQ Chicken',        description:'Grilled chicken tikka, BBQ sauce, red onions',      price:449, rating:4.6, tag:'Popular',    isVeg:false, cat:'Non-Veg' },
-  { _id:'4', name:'Garden Delight',     description:'Mushroom, capsicum, olive, paneer, corn',           price:349, rating:4.3, tag:'Healthy',    isVeg:true,  cat:'Veg' },
-  { _id:'5', name:'Cheese Overload',    description:'4-cheese blend with garlic butter and herbs',       price:429, rating:4.7, tag:'New',         isVeg:true,  cat:'Veg' },
-  { _id:'6', name:'Spicy Sausage',      description:'Italian sausage, jalapeños, red onion, mozzarella', price:479, rating:4.4, tag:'Spicy',      isVeg:false, cat:'Non-Veg' },
+{
+  _id:'1',
+  name:'Margherita Classic',
+  description:'Fresh mozzarella, tomato sauce, fresh basil leaves',
+  price:299,
+  rating:4.5,
+  tag:'Bestseller',
+  isVeg:true,
+  cat:'Veg',
+
+  base:"Thin Crust",
+  sauce:"Tomato Sauce",
+  cheese:"Mozzarella",
+  veggies:["Basil"],
+  meats:[]
+},
+
+{
+  _id:'2',
+  name:'Pepperoni Feast',
+  description:'Double pepperoni, mozzarella, dried oregano',
+  price:399,
+  rating:4.8,
+  tag:'Hot',
+  isVeg:false,
+  cat:'Non-Veg',
+
+  base:"Thin Crust",
+  sauce:"Tomato Sauce",
+  cheese:"Mozzarella",
+  veggies:[],
+  meats:["Pepperoni"]
+},
+
+{
+  _id:'3',
+  name:'BBQ Chicken',
+  description:'Grilled chicken tikka, BBQ sauce, red onions',
+  price:449,
+  rating:4.6,
+  tag:'Popular',
+  isVeg:false,
+  cat:'Non-Veg',
+
+  base:"Cheese Burst",
+  sauce:"BBQ Sauce",
+  cheese:"Mozzarella",
+  veggies:["Onion"],
+  meats:["Chicken"]
+}
 ]
 
 const CATS = ['All', 'Veg', 'Non-Veg']
@@ -38,10 +82,14 @@ export default function HomePage() {
     return matchCat && matchSearch
   })
 
-  const handleAddToCart = (pizza) => {
-    add(pizza)
-    toast.success(`${pizza.name} added to cart! 🍕`)
-  }
+ const handleAddToCart = (pizza) => {
+
+  add(pizza)
+
+  toast.success(
+    `${pizza.name} added to cart! 🍕`
+  )
+}
 
   return (
     <div>

@@ -50,6 +50,7 @@ export default function CheckoutPage() {
   try {
 
   console.log("PAYMENT SUCCESS");
+  console.log("CART ITEMS:", items);
 
   const orderPayload = {
     items: items.map(item => ({
