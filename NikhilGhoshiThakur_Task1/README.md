@@ -1,4 +1,12 @@
+# OIBSIP - Level 3 Task 1
+
 # 🍕 PizzAIa — Full Stack Pizza Ordering Platform
+
+### Oasis Infobyte Web Development Internship Project
+
+**Intern Name:** Nikhil Ghoshi Thakur  
+**Task:** Level 3 - Task 1  
+**Repository:** OIBSIP
 
 <p align="center">
   <img src="https://img.shields.io/badge/MERN-Stack-orange?style=for-the-badge" />
@@ -134,7 +142,7 @@ PizzAIa is a MERN Stack web application that enables customers to order pizzas o
 
 ```bash
 git clone https://github.com/universecoder1008/OIBSIP.git
-cd OIBSIP
+cd OIBSIP/NikhilGhoshiThakur_Task1
 ```
 
 ## Install Dependencies
@@ -205,28 +213,31 @@ http://localhost:5000
 # 📁 Project Structure
 
 ```text
-backend/
+OIBSIP/
 │
-├── src/
-│   ├── config/
-│   ├── controller/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   └── utils/
-│
-└── server.js
-
-frontend/
-│
-├── src/
-│   ├── components/
-│   ├── features/
-│   ├── hooks/
-│   ├── pages/
-│   ├── services/
-│   ├── utils/
-│   └── store.js
+└── NikhilGhoshiThakur_Task1/
+    │
+    ├── backend/
+    │   ├── src/
+    │   │   ├── config/
+    │   │   ├── controller/
+    │   │   ├── middleware/
+    │   │   ├── models/
+    │   │   ├── routes/
+    │   │   └── utils/
+    │   └── server.js
+    │
+    ├── frontend/
+    │   └── src/
+    │       ├── components/
+    │       ├── features/
+    │       ├── hooks/
+    │       ├── pages/
+    │       ├── services/
+    │       └── utils/
+    │
+    ├── screenshot/
+    └── README.md
 ```
 
 ---
@@ -262,7 +273,7 @@ frontend/
 
 # 👨‍💻 Author
 
-**Nikhil Thakur**
+**Nikhil Ghoshi Thakur**
 
 B.Tech Electronics Engineering  
 MITS Gwalior
